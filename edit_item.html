@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Item</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #f39c12;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e67e22;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Edit Item</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Register Number</label>
+        <input type="text" name="reg_no" value="{{ item.reg_no }}" required>
+
+        <label>Title</label>
+        <input type="text" name="title" value="{{ item.title }}" required>
+
+        <label>Category</label>
+        <input type="text" name="category" value="{{ item.category }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ item.description }}</textarea>
+
+        <label>Location</label>
+        <input type="text" name="location" value="{{ item.location }}" required>
+
+        <label>Contact</label>
+        <input type="text" name="contact" value="{{ item.contact }}" required>
+
+        <label>Change Image (optional)</label>
+        <input type="file" name="image">
+
+        <button type="submit">Update</button>
+
+    </form>
+
+    <a href="/view_items" class="back">← Back</a>
+
+</div>
+
+</body>
+</html>

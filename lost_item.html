@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lost Item Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Lost Item Form</h2>
+
+    <input type="text" placeholder="Item Name">
+    <input type="text" placeholder="Your Name">
+    <input type="text" placeholder="Contact">
+
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+function submitForm() {
+
+    let item = document.querySelectorAll("input")[0].value;
+    let name = document.querySelectorAll("input")[1].value;
+    let contact = document.querySelectorAll("input")[2].value;
+
+    let data = {
+        itemName: item,
+        personName: name,
+        contact: contact
+    };
+
+    let existing = JSON.parse(localStorage.getItem("lostItems")) || [];
+
+    existing.push(data);
+
+    localStorage.setItem("lostItems", JSON.stringify(existing));
+
+    alert("Lost item saved successfully!");
+
+    document.querySelectorAll("input").forEach(i => i.value = "");
+}
+</script>
+
+</body>
+</html>
